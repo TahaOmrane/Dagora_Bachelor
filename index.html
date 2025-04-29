@@ -1,0 +1,135 @@
+<!DOCTYPE html> 
+<html lang="de">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAGORA</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+
+    <header>
+        <h1>DAGORA</h1> 
+        <nav>
+            <button id="switchToBuerger">Bürgerportal</button>
+            <button id="switchToVerwalter">Verwaltungsportal</button>
+            <button id="logoutBtn" style="display: none;">Abmelden</button>
+        </nav>
+        <div id="currentUserDisplay" style="text-align: right; padding-right: 20px; color: white;"></div>
+    </header>
+
+    <main>
+        <section id="buerger-view" class="view active-view">
+
+            <div style="text-align: right; margin-bottom: 15px;">
+                <button id="refreshBtn">Seite Aktualisieren</button>
+            </div>
+
+            <h2>Willkommen im Bürgerportal!</h2>
+
+            <div id="auth-section">
+
+                <div id="login-form">
+                    <h3>Anmelden</h3>
+                    <input type="text" id="loginUser" placeholder="Benutzername" required>
+                    <input type="password" id="loginPass" placeholder="Passwort" required>
+                    <button id="loginBtn">Anmelden</button>
+                    <p>Noch kein Konto? <a href="#" id="showRegisterLink">Registrieren</a></p>
+                    <p id="loginError" class="error-message"></p>
+                </div>
+
+                <div id="register-form" style="display: none;">
+                    <h3>Registrieren</h3>
+                    <input type="text" id="registerUser" placeholder="Benutzername" required>
+                    <input type="text" id="registerFirstName" placeholder="Vorname" required>
+                    <input type="text" id="registerLastName" placeholder="Nachname" required>
+                    <input type="password" id="registerPass" placeholder="Passwort" required>
+                    <button id="registerBtn">Registrieren</button>
+                    <p>Bereits ein Konto? <a href="#" id="showLoginLink">Anmelden</a></p>
+                    <p id="registerError" class="error-message"></p>
+                    <p id="registerSuccess" class="success-message"></p>
+                </div>
+            </div>
+
+            <div id="logged-in-section" style="display: none;">
+                <h3>Meine Anträge</h3>
+                
+                <div id="wohnsitz-card" class="antrag-card">
+                    <h4>Wohnsitz</h4>
+                    <div id="wohnsitz-status"></div>
+                    <button id="wohnsitz-action-btn">Aktion</button>
+                </div>
+
+                <div id="ausweis-card" class="antrag-card">
+                    <h4>Personalausweis</h4>
+                    <div id="ausweis-status"></div>
+                    <button id="ausweis-action-btn">Aktion</button>
+                </div>
+
+                <div id="wohnsitz-form-container" class="form-container" style="display: none;">
+                    <h4 id="wohnsitz-form-title">Wohnsitz Anmelden</h4>
+                    <form id="wohnsitz-form">
+                        <label for="strasse">Straße & Hausnummer:</label>
+                        <input type="text" id="strasse" required><br>
+                        <label for="plz">PLZ:</label>
+                        <input type="text" id="plz" required pattern="\d{5}" title="Bitte 5 Ziffern eingeben"><br>
+                        <label for="ort">Ort:</label>
+                        <input type="text" id="ort" required><br>
+                        <label for="einzugsdatum">Einzugsdatum:</label>
+                        <input type="date" id="einzugsdatum" required><br>
+                        <label for="wohnbescheinigung">Wohnungsgeberbestätigung (PDF):</label>
+                        <input type="file" id="wohnbescheinigung" accept=".pdf"><br>
+                        <button type="submit">Antrag einreichen</button>
+                        <button type="button" id="cancelWohnsitzForm">Abbrechen</button>
+                        <p id="wohnsitzError" class="error-message"></p>
+                    </form>
+                </div>
+
+                <div id="ausweis-form-container" class="form-container" style="display: none;">
+                    <h4 id="ausweis-form-title">Personalausweis Verlängerung Beantragen</h4>
+                    <form id="ausweis-form">
+                        <label for="ausweisNummerAlt">Nummer des bisherigen Ausweises (optional):</label>
+                        <input type="text" id="ausweisNummerAlt"><br>
+                        <label for="ablaufdatumAlt">Ablaufdatum des bisherigen Ausweises:</label>
+                        <input type="date" id="ablaufdatumAlt" required><br>
+                        <label for="persoFoto">Biometrisches Foto (JPG/PNG):</label>
+                        <input type="file" id="persoFoto" accept="image/jpeg, image/png" required><br>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="unterschriftCheck" required>
+                            <label for="unterschriftCheck">Ich bestätige die Richtigkeit der Daten (digitale Unterschrift).</label>
+                        </div>
+                        <button type="submit">Verlängerung beantragen</button>
+                        <button type="button" id="cancelAusweisForm">Abbrechen</button>
+                        <p id="ausweisError" class="error-message"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="verwalter-view" class="view">
+            <h2>Verwaltungsportal</h2>
+
+            <div class="verwalter-section">
+                <h3>Offene Wohnsitz-Anträge</h3>
+                <div id="antraege-list">
+                    <p>Keine offenen Wohnsitz-Anträge.</p>
+                </div>
+            </div>
+
+            <div class="verwalter-section">
+                <h3>Offene Personalausweis-Anträge</h3>
+                <div id="ausweis-antraege-list">
+                    <p>Keine offenen Ausweis-Anträge.</p>
+                </div>
+            </div>
+
+            <div class="verwalter-section delete-section">
+                <h3>Datenverwaltung</h3>
+                <button id="deleteAllDataBtn" class="delete-btn">Alle Benutzer- & Antragsdaten löschen</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 

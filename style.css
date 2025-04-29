@@ -1,0 +1,249 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+}
+
+header nav button {
+    margin: 0 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+#currentUserDisplay {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.view {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.active-view {
+    display: block;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+#auth-section,
+#logged-in-section {
+    margin-top: 20px;
+}
+
+#login-form,
+#register-form,
+#wohnsitz-form-container,
+#ausweis-form-container {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+#login-form p,
+#register-form p {
+    font-size: 0.9em;
+}
+
+#login-form a,
+#register-form a {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+#login-form a:hover,
+#register-form a:hover { text-decoration: underline; }
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="file"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+button:hover { background-color: #0056b3; }
+
+button[type="button"] { background-color: #6c757d; }
+button[type="button"]:hover { background-color: #5a6268; }
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+.success-message {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+#wohnsitz-card,
+#ausweis-card {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+#wohnsitz-card h4,
+#ausweis-card h4 { 
+    margin-top: 0; margin-bottom: 10px;
+ }
+#wohnsitz-status,
+#ausweis-status {
+     margin-bottom: 10px; 
+    }
+
+.status-pending { 
+    color: orange; font-weight: bold;
+ }
+ 
+.status-approved {
+     color: green; font-weight: bold;
+ }
+.status-rejected { 
+    color: red; font-weight: bold; 
+}
+.status-ready-for-pickup { 
+    color: #17a2b8; font-weight: bold; 
+}
+
+.verwalter-section { 
+    margin-bottom: 30px; 
+}
+
+#antraege-list .antrag,
+#ausweis-antraege-list .antrag {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.antrag-details { 
+    margin: 5px 0; 
+    font-size: 0.9em; 
+    padding-left: 15px; 
+    border-left: 3px solid #eee; 
+}
+
+.antrag-details p { 
+    margin: 5px 0; 
+}
+
+.antrag-actions button { 
+    margin-top: 10px; 
+    font-size: 0.9em; 
+    padding: 5px 10px; 
+}
+
+.approve-btn { 
+    background-color: #28a745; 
+}
+
+.approve-btn:hover { 
+    background-color: #218838; 
+}
+
+.reject-btn { 
+    background-color: #dc3545; 
+}
+
+.reject-btn:hover { 
+    background-color: #c82333; 
+}
+
+.query-btn { 
+    background-color: #ffc107; 
+    color: #333; 
+}
+
+.query-btn:hover { 
+    background-color: #e0a800; 
+}
+
+label { 
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+.checkbox-group label { 
+    display: inline-block; 
+    font-weight: normal; 
+    margin-bottom: 10px; 
+    margin-left: 5px; 
+}
+
+.checkbox-group input[type="checkbox"] { 
+    width: auto; 
+    margin-bottom: 10px; 
+}
+
+#refreshBtn { 
+    background-color: #17a2b8; 
+}
+
+#refreshBtn:hover { 
+    background-color: #138496; 
+}
+
+.delete-section { 
+    margin-top: 40px; 
+    border-top: 1px solid #ccc; 
+    padding-top: 20px; 
+}
+
+.delete-btn { 
+    background-color: #dc3545; 
+    color: white; 
+}
+
+.delete-btn:hover { 
+    background-color: #c82333; 
+}
